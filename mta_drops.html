@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTA - FusionMods</title>
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1220765521126096968/1338549366788722708/favicon-32x32.png?ex=67ae1fbe&is=67acce3e&hm=d4ca6ae47f9bc4f7dcb5f6d1f9452fc1b141c4ab79096b8db6128ee854ef42d8&">
+    <!-- Adicionando Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +14,9 @@
             padding: 0;
             background-color: #000000;
             color: #ffffff;
+        }
+        header {
+            position: relative; /* Permite posicionar o ícone de engrenagem em relação ao header */
         }
         .navbar {
             display: flex;
@@ -30,36 +35,31 @@
             100% {background-position: 100%;}
         }
         .navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: bold;
-    transition: 0.3s;
-    position: relative; /* Adicionado para posicionar o sublinhado */
-}
-
-.navbar a:hover {
-    color: #ffffff;
-}
-
-/* Animação do sublinhado para os links da navbar */
-.navbar a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #ffffff;
-    bottom: -5px; /* Posição inicial do sublinhado */
-    left: 0;
-    transform: scaleX(0); /* Inicia sem sublinhado */
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-in-out;
-}
-
-.navbar a:hover::after {
-    transform: scaleX(1); /* Expande o sublinhado */
-    transform-origin: bottom left;
-
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            position: relative;
+        }
+        .navbar a:hover {
+            color: #ffffff;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+        .navbar a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
         .content {
             text-align: center;
@@ -138,6 +138,21 @@
             color: #00ffff;
         }
 
+        /* Estilo para o ícone de engrenagem */
+        .gear-icon {
+            position: absolute;
+            top: 60px; /* Ajuste conforme a altura da barra RGB e navbar */
+            right: 20px; /* Distância da borda direita */
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .gear-icon:hover {
+            color: #696969; /* Muda a cor ao passar o mouse */
+            transform: rotate(90deg); /* Gira a engrenagem */
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
             .content {
@@ -151,6 +166,11 @@
             }
             .drop-card {
                 width: 100%;
+            }
+            .gear-icon {
+                top: 50px; /* Ajuste para telas menores */
+                right: 15px;
+                font-size: 20px;
             }
         }
     </style>
@@ -176,13 +196,16 @@
         function goToOtimizacao() {
             window.location.href = 'otimizacao_drops.html';
         }
+        function goToUpdates() {
+            window.location.href = 'updates.html'; // Redireciona para a página de updates
+        }
     </script>
 </head>
 <body>
     <header>
         <div class="navbar">
             <div>
-                <a href="#" onclick="goToHome()">Inicio</a>
+                <a href="#" onclick="goToHome()"><i class="fas fa-home"></i> Início</a> <!-- Ícone de casa -->
             </div>
             <div>
                 <a href="#" onclick="openSupport()">Suporte</a>
@@ -190,33 +213,24 @@
             </div>
         </div>
         <div class="rgb-bar"></div>
+        <!-- Ícone de engrenagem no canto superior direito, abaixo da barra RGB -->
+        <i class="fas fa-cog gear-icon" onclick="goToUpdates()"></i>
     </header>
 
-    <!DOCTYPE html>
-    <html lang="pt-BR">
-    <head>
-        <!-- Cabeçalho e estilos (mantenha igual) -->
-    </head>
-    <body>
-        <header>
-            <!-- Navbar e RGB bar (mantenha igual) -->
-        </header>
-    
-        <main>
-            <div class="content">
-                <h1>MTA - FusionMods</h1>
-                <p>
-                    Bem-vindo à seção de MTA! Aqui você encontrará mods, scripts, mapas, veículos e muito mais para o Multi Theft Auto.
-                    Explore nossos conteúdos exclusivos e melhore sua experiência no MTA.
-                </p>
-    
-                <!-- Segunda Barra RGB -->
-                <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
-    
-                <!-- Título "Effects/Overdose" -->
-                <h1 style="margin-top: 40px;">Effects/Overdose</h1>
-            </div>
-    
+    <main>
+        <div class="content">
+            <h1>MTA - FusionMods</h1>
+            <p>
+                Bem-vindo à seção de MTA! Aqui você encontrará mods, scripts, mapas, veículos e muito mais para o Multi Theft Auto.
+                Explore nossos conteúdos exclusivos e melhore sua experiência no MTA.
+            </p>
+
+            <!-- Segunda Barra RGB -->
+            <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
+
+            <!-- Título "Effects/Overdose" -->
+            <h1 style="margin-top: 40px;">Effects/Overdose</h1>
+
             <!-- Seção de Drops -->
             <div class="drops-container">
                 <!-- Drop 1 -->
@@ -229,22 +243,22 @@
                     <p></p>
                     <a href="link_para_download_1.zip" class="download-btn">Download</a>
                 </div>
-    
+
                 <!-- Drop 2 -->
                 <div class="drop-card">
                     <video width="100%" controls>
-                        <source src="https://cdn.discordapp.com/attachments/1268698505258598555/1314640005058003004/2024-12-06_04-01-32.mp4?ex=67ae276a&is=67acd5ea&hm=e4e6174e798ce7e30245a48891d498bb731275832dbc2c1697754aac758dfbe9&" type="video/mp4">
+                        <source src="https://cdn.discordapp.com/attachments/1268698505258598555/1314635806882922596/2024-12-06_03-44-15.mp4?ex=67ab8081&is=67aa2f01&hm=3ad2d54ebb60924e707d33516ec869d8878839ceb9636a2315a54c7c31ca7223&" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                     <h2>#2</h2>
                     <p></p>
                     <a href="link_para_download_2.zip" class="download-btn">Download</a>
                 </div>
-    
+
                 <!-- Drop 3 -->
                 <div class="drop-card">
                     <video width="100%" controls>
-                        <source src="https://cdn.discordapp.com/attachments/1268698505258598555/1314631232759402506/2024-12-06_03-25-00.mp4?ex=67ae1f3e&is=67accdbe&hm=1e5b900f036fccdbdbc0a4c182f68daf40fc0240a36ed84b194d1ef3f2e0f229&" type="video/mp4">
+                        <source src="https://cdn.discordapp.com/attachments/1268698505258598555/1314631232759402506/2024-12-06_03-25-00.mp4?ex=67ab7c3e&is=67aa2abe&hm=92d3d051ba6868e5abdca68470b336610e3a61149b405e1445a8355aa0941d1e&" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                     <h2>#3</h2>
@@ -252,15 +266,13 @@
                     <a href="link_para_download_3.zip" class="download-btn">Download</a>
                 </div>
             </div>
-    
+
             <!-- Segunda Barra RGB -->
             <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
-    
+
             <!-- Título "GENRL/SOUNDS" -->
-            <div class="content">
-                <h1 style="margin-top: 40px;">GENRL/SOUNDS</h1>
-            </div>
-    
+            <h1 style="margin-top: 40px;">GENRL/SOUNDS</h1>
+
             <!-- Seção de Drops para GENRL/SOUNDS -->
             <div class="drops-container">
                 <!-- Drop 4 -->
@@ -273,7 +285,7 @@
                     <p></p>
                     <a href="https://cdn.discordapp.com/attachments/1268698505258598561/1297277521447878676/GENRL?ex=67aba257&is=67aa50d7&hm=fbdbf4bd258d08a7b45b67bc2ad7a03fc7a6f71261146e0b9da67fd25acbf696&" class="download-btn">Download</a>
                 </div>
-    
+
                 <!-- Drop 5 -->
                 <div class="drop-card">
                     <video width="100%" controls>
@@ -284,7 +296,7 @@
                     <p></p>
                     <a href="https://cdn.discordapp.com/attachments/1268698505258598561/1304144824349229166/GENRL?ex=67ab9183&is=67aa4003&hm=a4412a92e9a12f22df4a62fb77d1907e0d6065c3c88f30206d3d9938b7e570cd&" class="download-btn">Download</a>
                 </div>
-    
+
                 <!-- Drop 6 -->
                 <div class="drop-card">
                     <video width="100%" controls>
@@ -296,15 +308,19 @@
                     <a href="https://cdn.discordapp.com/attachments/1268698505258598561/1314395971379007598/GENRL?ex=67ab49e3&is=67a9f863&hm=2e7485809556abc3aa19bd9af76dd8de25cf811b87b19a54713ceb2f7ea07ab6&" class="download-btn">Download</a>
                 </div>
             </div>
-        </main>
 
             <!-- Terceira Barra RGB -->
-            <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>    
+            <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
 
             <!-- Título "GTA 3" -->
-            <div class="content">
-                <h1 style="margin-top: 40px;">GTA 3</h1>
-            </div>
+            <h1 style="margin-top: 40px;">GTA 3</h1>
+        </div>
+    </main>
 
-    </body>
-    </html>
+    <footer class="footer">
+        <p>
+            <a href="https://discord.gg/4XCQ2uWwBu" target="_blank">🔧 - Desenvolvido por 7'Ninja .</a>
+        </p>
+    </footer>
+</body>
+</html>
