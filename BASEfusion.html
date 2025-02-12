@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FusionMods</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1220765521126096968/1338549366788722708/favicon-32x32.png?ex=67ae1fbe&is=67acce3e&hm=d4ca6ae47f9bc4f7dcb5f6d1f9452fc1b141c4ab79096b8db6128ee854ef42d8&">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #000;
+            padding: 15px;
+        }
+        .rgb-bar {
+            height: 5px;
+            background: linear-gradient(90deg, red, orange, yellow, rgb(0, 255, 0), cyan, blue, rgb(205, 0, 205));
+            background-size: 200% 100%;
+            animation: rgbMove 5s linear infinite;
+        }
+        @keyframes rgbMove {
+            0% {background-position: 0%;}
+            100% {background-position: 100%;}
+        }
+        .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+    position: relative; /* Adicionado para posicionar o sublinhado */
+}
+
+.navbar a:hover {
+    color: #696969;
+}
+
+/* Animação do sublinhado para os links da navbar */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    bottom: -5px; /* Posição inicial do sublinhado */
+    left: 0;
+    transform: scaleX(0); /* Inicia sem sublinhado */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1); /* Expande o sublinhado */
+    transform-origin: bottom left;
+
+        }
+        .categories {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        .categories a {
+            margin: 10px 20px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .categories a:hover {
+            color: #696969;
+        }
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000;
+            font-weight: bold;
+        }
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer a:hover {
+            color: #696969;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .categories a {
+                font-size: 18px;
+                margin: 10px;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+    <script>
+        function openSupport() {
+            window.location.href = 'suporte.html';
+        }
+        function openFAQs() {
+            window.location.href = 'faqs.html';
+        }
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+        function goToFiveM() {
+            window.location.href = 'fivem_drops.html';
+        }
+        function goToMTA() {
+            window.location.href = 'mta_drops.html';
+        }
+        function goToFortnite() {
+            window.location.href = 'fortnite_drops.html';
+        }
+        function goToOtimizacao() {
+            window.location.href = 'otimizacao_drops.html';
+        }
+        function goToLoja() {
+            window.location.href = 'Loja.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div>
+                <a href="#" onclick="goToHome()">Início</a>
+            </div>
+            <div>
+                <a href="#" onclick="openSupport()">Suporte</a>
+                <a href="#" onclick="openFAQs()">FAQs</a>
+            </div>
+        </div>
+        <div class="rgb-bar"></div>
+    </header>
+
+    <main>
+        <div class="categories">
+            <a href="#" onclick="goToFiveM()">FiveM</a>
+            <a href="#" onclick="goToMTA()">MTA</a>
+            <a href="#" onclick="goToFortnite()">Fortnite</a>
+            <a href="#" onclick="goToOtimizacao()">Otimização</a>
+            <a href="#" onclick="goToLoja()">Loja</a>
+        </div>
+        <div class="content">
+            <h1>Bem-vindo a FusionMods!</h1>
+            <p>Escolha uma categoria acima para explorar nossos conteúdos exclusivos.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>
+            <a href="https://discord.gg/4XCQ2uWwBu" target="_blank">🔧 - Desenvolvido por 7'Ninja .</a>
+        </p>
+    </footer>
+</body>
+</html>
