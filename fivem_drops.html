@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FiveM - FusionMods</title>
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1220765521126096968/1338549366788722708/favicon-32x32.png?ex=67ae1fbe&is=67acce3e&hm=d4ca6ae47f9bc4f7dcb5f6d1f9452fc1b141c4ab79096b8db6128ee854ef42d8&">
+    <!-- Adicionando Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +14,9 @@
             padding: 0;
             background-color: #000000;
             color: #ffffff;
+        }
+        header {
+            position: relative; /* Permite posicionar o ícone de engrenagem em relação ao header */
         }
         .navbar {
             display: flex;
@@ -30,36 +35,31 @@
             100% {background-position: 100%;}
         }
         .navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: bold;
-    transition: 0.3s;
-    position: relative; /* Adicionado para posicionar o sublinhado */
-}
-
-.navbar a:hover {
-    color: #ffffff;
-}
-
-/* Animação do sublinhado para os links da navbar */
-.navbar a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #ffffff;
-    bottom: -5px; /* Posição inicial do sublinhado */
-    left: 0;
-    transform: scaleX(0); /* Inicia sem sublinhado */
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-in-out;
-}
-
-.navbar a:hover::after {
-    transform: scaleX(1); /* Expande o sublinhado */
-    transform-origin: bottom left;
-
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            position: relative;
+        }
+        .navbar a:hover {
+            color: #ffffff;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+        .navbar a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
         .content {
             text-align: center;
@@ -138,6 +138,21 @@
             color: #00ffff;
         }
 
+        /* Estilo para o ícone de engrenagem */
+        .gear-icon {
+            position: absolute;
+            top: 60px; /* Ajuste conforme a altura da barra RGB e navbar */
+            right: 20px; /* Distância da borda direita */
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .gear-icon:hover {
+            color: #696969; /* Muda a cor ao passar o mouse */
+            transform: rotate(90deg); /* Gira a engrenagem */
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
             .content {
@@ -151,6 +166,11 @@
             }
             .drop-card {
                 width: 100%;
+            }
+            .gear-icon {
+                top: 50px; /* Ajuste para telas menores */
+                right: 15px;
+                font-size: 20px;
             }
         }
     </style>
@@ -176,13 +196,16 @@
         function goToOtimizacao() {
             window.location.href = 'otimizacao_drops.html';
         }
+        function goToUpdates() {
+            window.location.href = 'updates.html'; // Redireciona para a página de updates
+        }
     </script>
 </head>
 <body>
     <header>
         <div class="navbar">
             <div>
-                <a href="#" onclick="goToHome()">Inicio</a>
+                <a href="#" onclick="goToHome()"><i class="fas fa-home"></i> Início</a> <!-- Ícone de casa -->
             </div>
             <div>
                 <a href="#" onclick="openSupport()">Suporte</a>
@@ -190,6 +213,8 @@
             </div>
         </div>
         <div class="rgb-bar"></div>
+        <!-- Ícone de engrenagem no canto superior direito, abaixo da barra RGB -->
+        <i class="fas fa-cog gear-icon" onclick="goToUpdates()"></i>
     </header>
 
     <main>
@@ -203,13 +228,8 @@
             <!-- Segunda Barra RGB -->
             <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
 
-                        <!-- Título "Citizen" -->
-                        <h1 style="margin-top: 40px;">CITIZEN</h1>
-                    </div>
-                </main>
-            
-                <footer class="footer">
-                    <p>
+            <!-- Título "Citizen" -->
+            <h1 style="margin-top: 40px;">CITIZEN</h1>
 
             <!-- Seção de Drops -->
             <div class="drops-container">
@@ -241,13 +261,9 @@
             <!-- Nova Barra RGB -->
             <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
 
-                        <!-- Título "mod de som" -->
-                        <h1 style="margin-top: 40px;">MOD DE SOM</h1>
-                    </div>
-                </main>
-            
-                <footer class="footer">
-                    <p>
+            <!-- Título "mod de som" -->
+            <h1 style="margin-top: 40px;">MOD DE SOM</h1>
+
             <!-- Nova Seção de Drops -->
             <div class="drops-container">
                 <!-- Exemplo de Drop 4 -->
@@ -277,7 +293,7 @@
                     <video width="100%" controls>
                         <source src="https://cdn.discordapp.com/attachments/1129224720315846716/1305688894951526482/Desktop_2023.03.26_-_21.06.59.12.DVR.mp4?ex=67ade3cb&is=67ac924b&hm=f67afe952502d1c05decec9932c99592e967f4f4f544eb5b42b83f18dae9ab2e&" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
-                    </video> 
+                    </video>
                     <h2>Mod Satisfatorio</h2>
                     <p></p>
                     <a href="https://cdn.discordapp.com/attachments/1129224720315846716/1305688951973089350/sound.rar?ex=67ade3d8&is=67ac9258&hm=20f9480e7f5f8c99ffe607d1c502a54bf3d61da4fbf516e6eb6c60dc3540545b&" class="download-btn">Download</a>
@@ -292,8 +308,10 @@
         </div>
     </main>
 
-            <!-- Segunda Barra RGB -->
-            <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
-
+    <footer class="footer">
+        <p>
+            <a href="https://discord.gg/4XCQ2uWwBu" target="_blank">🔧 - Desenvolvido por 7'Ninja .</a>
+        </p>
+    </footer>
 </body>
 </html>
