@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja - FusionMods</title>
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1220765521126096968/1338549366788722708/favicon-32x32.png?ex=67ae1fbe&is=67acce3e&hm=d4ca6ae47f9bc4f7dcb5f6d1f9452fc1b141c4ab79096b8db6128ee854ef42d8&">
+    <!-- Adicionando Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +14,9 @@
             padding: 0;
             background-color: #000000;
             color: #ffffff;
+        }
+        header {
+            position: relative; /* Permite posicionar o ícone de engrenagem em relação ao header */
         }
         .navbar {
             display: flex;
@@ -30,36 +35,31 @@
             100% {background-position: 100%;}
         }
         .navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: bold;
-    transition: 0.3s;
-    position: relative; /* Adicionado para posicionar o sublinhado */
-}
-
-.navbar a:hover {
-    color: #ffffff;
-}
-
-/* Animação do sublinhado para os links da navbar */
-.navbar a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #ffffff;
-    bottom: -5px; /* Posição inicial do sublinhado */
-    left: 0;
-    transform: scaleX(0); /* Inicia sem sublinhado */
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-in-out;
-}
-
-.navbar a:hover::after {
-    transform: scaleX(1); /* Expande o sublinhado */
-    transform-origin: bottom left;
-
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            position: relative;
+        }
+        .navbar a:hover {
+            color: #ffffff;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+        .navbar a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
         .content {
             text-align: center;
@@ -110,7 +110,7 @@
         .store-card .price {
             font-size: 1.2em;
             font-weight: bold;
-            color: #00ffff;
+            color: #ffffff;
             margin: 10px 0;
         }
         .buy-btn {
@@ -185,6 +185,69 @@
             color: #ffffff;
         }
 
+        /* Estilo para o ícone de engrenagem */
+        .gear-icon {
+            position: absolute;
+            top: 60px; /* Ajuste conforme a altura da barra RGB e navbar */
+            right: 20px; /* Distância da borda direita */
+            font-size: 28px; /* Tamanho do ícone */
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .gear-icon:hover {
+            color: #696969; /* Muda a cor ao passar o mouse */
+            transform: rotate(90deg); /* Gira a engrenagem */
+        }
+
+        /* Estilo para o card de cupom */
+        .cupom-card {
+            background-color: #1a1a1a;
+            border: 2px solid #1a1a1a; /* Borda verde */
+            border-radius: 10px;
+            padding: 5px;
+            width: 100%;
+            max-width: 600px; /* Largura máxima */
+            margin: 0 auto 12px auto; /* Centralizado e com margem abaixo */
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .cupom-card h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, red, orange, yellow, rgb(0, 255, 0), cyan, blue, rgb(205, 0, 205));
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rgbMove 5s linear infinite;
+        }
+        .cupom-card p {
+            font-size: 1em;
+            line-height: 1.5;
+            color: #ccc;
+        }
+        .cupom-card .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        .cupom-card button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, red, orange, yellow, rgb(0, 255, 0), cyan, blue, rgb(205, 0, 205));
+            background-size: 200% 100%;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            animation: rgbMove 5s linear infinite;
+        }
+        .cupom-card button:hover {
+            opacity: 0.8;
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
             .content {
@@ -198,6 +261,14 @@
             }
             .store-card {
                 width: 100%;
+            }
+            .gear-icon {
+                top: 50px; /* Ajuste para telas menores */
+                right: 15px;
+                font-size: 24px; /* Tamanho menor para telas pequenas */
+            }
+            .cupom-card {
+                width: 90%; /* Ajuste para telas menores */
             }
         }
     </style>
@@ -224,15 +295,25 @@
             window.location.href = 'otimizacao_drops.html';
         }
         function goToUpdates() {
-            window.location.href = 'updates.html';
-        }        
+            window.location.href = 'updates.html'; // Redireciona para a página de updates
+        }
+
+        // Função para copiar o cupom
+        function copiarCupom() {
+            const cupom = "FUSION10";
+            navigator.clipboard.writeText(cupom).then(() => {
+                alert("Cupom copiado: " + cupom);
+            }).catch(err => {
+                console.error('Erro ao copiar cupom: ', err);
+            });
+        }
     </script>
 </head>
 <body>
     <header>
         <div class="navbar">
             <div>
-               <a href="#" onclick="goToHome()"><i class="fas fa-home"></i> Início</a> <!-- Ícone de casa -->
+                <a href="#" onclick="goToHome()"><i class="fas fa-home"></i> Início</a> <!-- Ícone de casa -->
             </div>
             <div>
                 <a href="#" onclick="openSupport()">Suporte</a>
@@ -240,6 +321,7 @@
             </div>
         </div>
         <div class="rgb-bar"></div>
+        <!-- Ícone de engrenagem no canto superior direito, abaixo da barra RGB -->
         <i class="fas fa-cog gear-icon" onclick="goToUpdates()"></i>
     </header>
 
@@ -249,6 +331,18 @@
             <p>
                 Bem-vindo à nossa loja! Aqui você encontrará produtos exclusivos, como mods, scripts, e outros conteúdos premium para melhorar sua experiência.
             </p>
+
+            <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
+            
+            <!-- Card de Cupom de Desconto -->
+            <div class="cupom-card">
+                <h2>Cupom de Desconto</h2>
+                <p>Use o cupom abaixo para obter descontos especiais em sua compra!</p>
+                <div class="price">Cupom: FUSION10</div>
+                <div class="price">Desconto: 10% OFF</div>
+                <!-- Botão para copiar o cupom -->
+                <button class="buy-btn" onclick="copiarCupom()">Copiar Cupom</button>
+            </div>
 
             <!-- Seção de Produtos -->
             <div class="store-container">
@@ -289,38 +383,13 @@
                 </div>
             </div>
 
-                            <!-- Segunda Barra RGB -->
-                            <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
-
-            <!-- Seção de Feedback -->
-            <div class="feedback-section">
-                <h2>Deixe seu Feedback</h2>
-                <form action="https://formsubmit.co/seu-email@exemplo.com" method="POST">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
-                    <div>
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" required>
-                    </div>
-                    <div>
-                        <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div>
-                        <label for="mensagem">Mensagem:</label>
-                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="buy-btn">Fechado</button>
-                </form>
-            </div>
-        </div>
-    </main>
+            <!-- Segunda Barra RGB -->
+            <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
 
     <footer class="footer">
         <p>
             <a href="https://discord.gg/4XCQ2uWwBu" target="_blank">🔧 - Desenvolvido por 7'Ninja .</a>
         </p>
     </footer>
-    
 </body>
 </html>
