@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQs - FusionMods</title>
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1220765521126096968/1338549366788722708/favicon-32x32.png?ex=67ae1fbe&is=67acce3e&hm=d4ca6ae47f9bc4f7dcb5f6d1f9452fc1b141c4ab79096b8db6128ee854ef42d8&">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,36 +31,31 @@
             100% {background-position: 100%;}
         }
         .navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: bold;
-    transition: 0.3s;
-    position: relative; /* Adicionado para posicionar o sublinhado */
-}
-
-.navbar a:hover {
-    color: #ffffff;
-}
-
-/* Animação do sublinhado para os links da navbar */
-.navbar a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #ffffff;
-    bottom: -5px; /* Posição inicial do sublinhado */
-    left: 0;
-    transform: scaleX(0); /* Inicia sem sublinhado */
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-in-out;
-}
-
-.navbar a:hover::after {
-    transform: scaleX(1); /* Expande o sublinhado */
-    transform-origin: bottom left;
-
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            position: relative;
+        }
+        .navbar a:hover {
+            color: #ffffff;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+        .navbar a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
         .content {
             text-align: center;
@@ -162,7 +158,7 @@
     <header>
         <div class="navbar">
             <div>
-                <a href="#" onclick="goToHome()">Inicio</a>
+                <a href="#" onclick="goToHome()"><i class="fas fa-home"></i> Início</a>
             </div>
             <div>
                 <a href="#" onclick="openSupport()">Suporte</a>
