@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otimização - FusionMods</title>
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1220765521126096968/1338549366788722708/favicon-32x32.png?ex=67ae1fbe&is=67acce3e&hm=d4ca6ae47f9bc4f7dcb5f6d1f9452fc1b141c4ab79096b8db6128ee854ef42d8&">
+    <!-- Adicionando Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +14,9 @@
             padding: 0;
             background-color: #000000;
             color: #ffffff;
+        }
+        header {
+            position: relative; /* Permite posicionar o ícone de engrenagem em relação ao header */
         }
         .navbar {
             display: flex;
@@ -35,26 +40,25 @@
             padding: 10px;
             font-weight: bold;
             transition: 0.3s;
-            position: relative; /* Adicionado para posicionar o sublinhado */
+            position: relative;
         }
         .navbar a:hover {
             color: #ffffff;
         }
-        /* Animação do sublinhado para os links da navbar */
         .navbar a::after {
             content: '';
             position: absolute;
             width: 100%;
             height: 2px;
             background-color: #ffffff;
-            bottom: -5px; /* Posição inicial do sublinhado */
+            bottom: -5px;
             left: 0;
-            transform: scaleX(0); /* Inicia sem sublinhado */
+            transform: scaleX(0);
             transform-origin: bottom right;
             transition: transform 0.3s ease-in-out;
         }
         .navbar a:hover::after {
-            transform: scaleX(1); /* Expande o sublinhado */
+            transform: scaleX(1);
             transform-origin: bottom left;
         }
         .content {
@@ -134,6 +138,21 @@
             color: #00ffff;
         }
 
+        /* Estilo para o ícone de engrenagem */
+        .gear-icon {
+            position: absolute;
+            top: 60px; /* Ajuste conforme a altura da barra RGB e navbar */
+            right: 20px; /* Distância da borda direita */
+            font-size: 28px; /* Tamanho do ícone */
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .gear-icon:hover {
+            color: #696969; /* Muda a cor ao passar o mouse */
+            transform: rotate(90deg); /* Gira a engrenagem */
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
             .content {
@@ -147,6 +166,11 @@
             }
             .drop-card {
                 width: 100%;
+            }
+            .gear-icon {
+                top: 60px; /* Ajuste para telas menores */
+                right: 15px;
+                font-size: 28px; /* Tamanho menor para telas pequenas */
             }
         }
     </style>
@@ -172,6 +196,9 @@
         function goToOtimizacao() {
             window.location.href = 'otimizacao_drops.html';
         }
+        function goToUpdates() {
+            window.location.href = 'updates.html'; // Redireciona para a página de updates
+        }
     </script>
 </head>
 <body>
@@ -186,6 +213,7 @@
             </div>
         </div>
         <div class="rgb-bar"></div>
+        <!-- Ícone de engrenagem no canto superior direito, abaixo da barra RGB -->
         <i class="fas fa-cog gear-icon" onclick="goToUpdates()"></i>
     </header>
 
@@ -196,13 +224,11 @@
                 Bem-vindo à seção de Otimização! Aqui você encontrará ferramentas, scripts e dicas para melhorar o desempenho do seu sistema e jogos.
             </p>
 
-                        <!-- Segunda Barra RGB -->
-                        <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
-            
-                                    <!-- Título "Extra" -->
-            <h1 style="margin-top: 40px;">FPS BOOST </h1>
-        </div>
-    </main>
+            <!-- Segunda Barra RGB -->
+            <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
+
+            <!-- Título "FPS BOOST" -->
+            <h1 style="margin-top: 40px;">FPS BOOST</h1>
 
             <!-- Seção de Drops -->
             <div class="drops-container">
@@ -213,7 +239,6 @@
                     <p>Scripts e ferramentas para melhorar o desempenho geral do seu sistema operacional.</p>
                     <a href="link_para_download_1.zip" class="download-btn">Download</a>
                 </div>
-
 
                 <!-- Exemplo de Drop 2 -->
                 <div class="drop-card">
@@ -236,9 +261,9 @@
         </div>
     </main>
 
-                            <!-- Segunda Barra RGB -->
-                            <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
-                            
+    <!-- Segunda Barra RGB -->
+    <div class="rgb-bar" style="margin-top: 40px; margin-bottom: 40px;"></div>
+
     <footer class="footer">
         <p>
             <a href="https://discord.gg/4XCQ2uWwBu" target="_blank">🔧 - Desenvolvido por 7'Ninja .</a>
