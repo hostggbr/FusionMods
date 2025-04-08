@@ -392,43 +392,41 @@
         </p>
     </footer>
 
-    <script>
-        // Desativa clique direito - Anti Cloner 
-        document.addEventListener("contextmenu", e => e.preventDefault());
-      
-        // Bloqueia teclas comuns de devtools
-        document.addEventListener("keydown", function(e) {
-          if (
-            e.key === "F12" ||
-            (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
-            (e.ctrlKey && (e.key === "U" || e.key === "u"))
-          ) {
-            e.preventDefault();
-            window.location.href = "punido.html";
-          }
-        });
-      
-        // Detecta DevTools aberto por atraso
-        setInterval(() => {
-          const start = performance.now();
-          debugger;
-          const end = performance.now();
-          if (end - start > 100) {
-            window.location.href = "punido.html";
-          }
-        }, 1000);
-      
-        // Detecta DevTools pela manipulação do console
-        (function() {
-          const element = new Image();
-          Object.defineProperty(element, 'id', {
-            get: function () {
-              window.location.href = "punido.html";
-            }
-          });
-          console.log(element);
-        })();
-      </script>
-
-      </body>
-      </html>         
+<script>
+    // Desativa clique direito - Anti Cloner 
+    document.addEventListener("contextmenu", e => e.preventDefault());
+  
+    // Bloqueia teclas comuns de devtools
+    document.addEventListener("keydown", function(e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
+        (e.ctrlKey && (e.key === "U" || e.key === "u"))
+      ) {
+        e.preventDefault();
+        window.location.href = "punido.html";
+      }
+    });
+  
+    // Detecta DevTools aberto por atraso
+    setInterval(() => {
+      const start = performance.now();
+      debugger;
+      const end = performance.now();
+      if (end - start > 100) {
+        window.location.href = "punido.html";
+      }
+    }, 1000);
+  
+    // Detecta DevTools pela manipulação do console
+    (function() {
+      const element = new Image();
+      Object.defineProperty(element, 'id', {
+        get: function () {
+          window.location.href = "punido.html";
+        }
+      });
+      console.log(element);
+    })();
+  </script>
+  
