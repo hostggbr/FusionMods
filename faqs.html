@@ -221,41 +221,41 @@
         </p>
     </footer>
 
-    <script>
-        const tempoAtual = new Date().getTime();
-        const tempoPunição = localStorage.getItem("bloqueado_ate");
-      
-        if (tempoPunição && tempoAtual < parseInt(tempoPunição)) {
-          window.location.href = "punido.html";
+<script>
+    // Desativa clique direito - Anti Cloner 
+    document.addEventListener("contextmenu", e => e.preventDefault());
+  
+    // Bloqueia teclas comuns de devtools
+    document.addEventListener("keydown", function(e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
+        (e.ctrlKey && (e.key === "U" || e.key === "u"))
+      ) {
+        e.preventDefault();
+        window.location.href = "/punido.html";
+      }
+    });
+  
+    // Detecta DevTools aberto por atraso
+    setInterval(() => {
+      const start = performance.now();
+      debugger;
+      const end = performance.now();
+      if (end - start > 100) {
+        window.location.href = "/punido.html";
+      }
+    }, 1000);
+  
+    // Detecta DevTools pela manipulação do console
+    (function() {
+      const element = new Image();
+      Object.defineProperty(element, 'id', {
+        get: function () {
+          window.location.href = "/punido.html";
         }
-      
-        function aplicarPunicao5Minutos() {
-          const cincoMinutos = 5 * 60 * 1000;
-          const liberarAcesso = new Date().getTime() + cincoMinutos;
-          localStorage.setItem("bloqueado_ate", liberarAcesso.toString());
-          window.location.href = "punido.html";
-        }
-      
-        document.addEventListener("keydown", function(e) {
-          if (
-            e.key === "F12" ||
-            (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
-            (e.ctrlKey && ["U", "u"].includes(e.key))
-          ) {
-            e.preventDefault();
-            aplicarPunicao5Minutos();
-          }
-        });
-      
-        setInterval(() => {
-          const antes = performance.now();
-          debugger;
-          const depois = performance.now();
-          if (depois - antes > 100) {
-            aplicarPunicao5Minutos();
-          }
-        }, 1000);
-      </script>
-      
-      </body>
-      </html>      
+      });
+      console.log(element);
+    })();
+  </script>
+  
