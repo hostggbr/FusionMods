@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja - FusionMods</title>
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1343606646483718174/1350213529923354638/favicon-32x32.png?ex=67d5ebd7&is=67d49a57&hm=a51745e084ee1aabe6bcc702bf0622b0d5a3eb0b2700acdb5e9b7689329d80ea&">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1220765521126096968/1338549366788722708/favicon-32x32.png?ex=67ae1fbe&is=67acce3e&hm=d4ca6ae47f9bc4f7dcb5f6d1f9452fc1b141c4ab79096b8db6128ee854ef42d8&">
     <!-- Adicionando Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -182,7 +182,7 @@
             transition: 0.3s;
         }
         .footer a:hover {
-            color: #ffffff;
+            color: #696969;
         }
 
         /* Estilo para o ícone de engrenagem */
@@ -348,7 +348,7 @@
             <div class="store-container">
                 <!-- Exemplo de Produto 1 -->
                 <div class="store-card">
-                    <img src="caminho/para/imagem1.jpg" alt="Manutenção">
+                    <img src="" alt="Manutenção">
                     <h2>Manutenção</h2>
                     <p>De Momento encontra-se indisponível !</p>
                     <div class="price">R$ 00,00</div>
@@ -360,7 +360,7 @@
 
                 <!-- Exemplo de Produto 2 -->
                 <div class="store-card">
-                    <img src="caminho/para/imagem2.jpg" alt="Manutenção">
+                    <img src="" alt="Manutenção">
                     <h2>Manutenção</h2>
                     <p>De Momento encontra-se indisponível !</p>
                     <div class="price">R$ 00,00</div>
@@ -372,7 +372,7 @@
 
                 <!-- Exemplo de Produto 3 -->
                 <div class="store-card">
-                    <img src="caminho/para/imagem3.jpg" alt="Manutenção">
+                    <img src="" alt="Manutenção">
                     <h2>Manutenção</h2>
                     <p>De Momento encontra-se indisponível !</p>
                     <div class="price">R$ 00,00</div>
@@ -388,8 +388,47 @@
 
     <footer class="footer">
         <p>
-            <a href="https://discord.gg/4XCQ2uWwBu" target="_blank">🔧 - Desenvolvido por 7'Ninja .</a>
+            <a href="https://discord.gg/6pPQPmGVGT" target="_blank">🔧 - Desenvolvido por 7'Ninja .</a>
         </p>
     </footer>
-</body>
-</html>
+
+    <script>
+        // Desativa clique direito - Anti Cloner 
+        document.addEventListener("contextmenu", e => e.preventDefault());
+      
+        // Bloqueia teclas comuns de devtools
+        document.addEventListener("keydown", function(e) {
+          if (
+            e.key === "F12" ||
+            (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
+            (e.ctrlKey && (e.key === "U" || e.key === "u"))
+          ) {
+            e.preventDefault();
+            window.location.href = "punido.html";
+          }
+        });
+      
+        // Detecta DevTools aberto por atraso
+        setInterval(() => {
+          const start = performance.now();
+          debugger;
+          const end = performance.now();
+          if (end - start > 100) {
+            window.location.href = "punido.html";
+          }
+        }, 1000);
+      
+        // Detecta DevTools pela manipulação do console
+        (function() {
+          const element = new Image();
+          Object.defineProperty(element, 'id', {
+            get: function () {
+              window.location.href = "punido.html";
+            }
+          });
+          console.log(element);
+        })();
+      </script>
+
+      </body>
+      </html>         
