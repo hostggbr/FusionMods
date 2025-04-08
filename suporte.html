@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suporte - FusionMods</title>
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1343606646483718174/1350213529923354638/favicon-32x32.png?ex=67d5ebd7&is=67d49a57&hm=a51745e084ee1aabe6bcc702bf0622b0d5a3eb0b2700acdb5e9b7689329d80ea&">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1255256361894150309/1359277627528974467/favicon-32x32.png?ex=67f6e570&is=67f593f0&hm=da685940dc0ebc1f15a460a8317d2f175b0cbebab0498a0152f6530cb350b85c&">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
@@ -126,7 +126,7 @@
             transition: 0.3s;
         }
         .footer a:hover {
-            color: #00ffff;
+            color: #696969;
         }
 
         /* Responsividade */
@@ -220,8 +220,45 @@
 
     <footer class="footer">
         <p>
-            <a href="https://discord.gg/4XCQ2uWwBu" target="_blank">🔧 - Desenvolvido por 7'Ninja .</a>
+            <a href="https://discord.gg/6pPQPmGVGT" target="_blank">🔧 - Desenvolvido por 7'Ninja .</a>
         </p>
     </footer>
-</body>
-</html>
+
+    <script>
+        const tempoAtual = new Date().getTime();
+        const tempoPunição = localStorage.getItem("bloqueado_ate");
+      
+        if (tempoPunição && tempoAtual < parseInt(tempoPunição)) {
+          window.location.href = "punido.html";
+        }
+      
+        function aplicarPunicao5Minutos() {
+          const cincoMinutos = 5 * 60 * 1000;
+          const liberarAcesso = new Date().getTime() + cincoMinutos;
+          localStorage.setItem("bloqueado_ate", liberarAcesso.toString());
+          window.location.href = "punido.html";
+        }
+      
+        document.addEventListener("keydown", function(e) {
+          if (
+            e.key === "F12" ||
+            (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
+            (e.ctrlKey && ["U", "u"].includes(e.key))
+          ) {
+            e.preventDefault();
+            aplicarPunicao5Minutos();
+          }
+        });
+      
+        setInterval(() => {
+          const antes = performance.now();
+          debugger;
+          const depois = performance.now();
+          if (depois - antes > 100) {
+            aplicarPunicao5Minutos();
+          }
+        }, 1000);
+      </script>
+      
+      </body>
+      </html>
