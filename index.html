@@ -149,33 +149,18 @@
     }
   </style>
   <script>
-    function openSupport() {
-      window.location.href = 'suporte.html';
-    }
-    function openFAQs() {
-      window.location.href = 'faqs.html';
-    }
-    function goToHome() {
-      window.location.href = 'index.html';
-    }
-    function goToFiveM() {
-      window.location.href = 'fivem_drops.html';
-    }
-    function goToMTA() {
-      window.location.href = 'mta_drops.html';
-    }
-    function goToFortnite() {
-      window.location.href = 'fortnite_drops.html';
-    }
-    function goToOtimizacao() {
-      window.location.href = 'otimizacao_drops.html';
-    }
-    function goToloja() {
-      window.location.href = 'loja.html';
-    }
-    function goToUpdates() {
-      window.location.href = 'updates.html';
-    }
+    // Funções de navegação
+    function openSupport() { window.location.href = 'suporte.html'; }
+    function openFAQs() { window.location.href = 'faqs.html'; }
+    function goToHome() { window.location.href = 'index.html'; }
+    function goToFiveM() { window.location.href = 'fivem_drops.html'; }
+    function goToMTA() { window.location.href = 'mta_drops.html'; }
+    function goToFortnite() { window.location.href = 'fortnite_drops.html'; }
+    function goToOtimizacao() { window.location.href = 'otimizacao_drops.html'; }
+    function goToloja() { window.location.href = 'loja.html'; }
+    function goToUpdates() { window.location.href = 'updates.html'; }
+
+    // Preloader
     window.addEventListener("load", function () {
       const preloader = document.getElementById("preloader");
       const content = document.getElementById("content");
@@ -187,6 +172,58 @@
         }, 800);
       }, 2000);
     });
+
+    // Punição - Impede ações indesejadas
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    document.addEventListener("keydown", function(e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
+        (e.ctrlKey && (e.key === "U" || e.key === "u"))
+      ) {
+        e.preventDefault();
+        window.location.href = "punido.html"; // Redireciona para a punição
+      }
+    });
+
+    // Detecta DevTools aberto por atraso
+    setInterval(() => {
+      const start = performance.now();
+      debugger;
+      const end = performance.now();
+      if (end - start > 100) {
+        window.location.href = "punido.html"; // Redireciona para a punição
+      }
+    }, 1000);
+
+    // Detecta DevTools pela manipulação do console
+    (function() {
+      const element = new Image();
+      Object.defineProperty(element, 'id', {
+        get: function () {
+          window.location.href = "punido.html"; // Redireciona para a punição
+        }
+      });
+      console.log(element);
+    })();
+
+    // Sistema de punição
+    function iniciarPunicao() {
+      const cincoMinutos = 5 * 60 * 1000; // 5 minutos em milissegundos
+      const desbloquearAcesso = new Date().getTime() + cincoMinutos;
+      localStorage.setItem("bloqueado_ate", desbloquearAcesso); // Armazena o tempo até o desbloqueio
+      window.location.href = "punido.html"; // Redireciona para a página de punição
+    }
+
+    window.onload = function() {
+      const bloqueadoAte = localStorage.getItem("bloqueado_ate");
+      if (bloqueadoAte) {
+        const tempoRestante = new Date().getTime() - bloqueadoAte;
+        if (tempoRestante < 0) {
+          iniciarPunicao(); // Redireciona para punição se estiver bloqueado
+        }
+      }
+    };
   </script>
 </head>
 <body>
@@ -229,42 +266,5 @@
       </p>
     </footer>
   </div>
-
-<script>
-    // Desativa clique direito - Anti Cloner 
-    document.addEventListener("contextmenu", e => e.preventDefault());
-  
-    // Bloqueia teclas comuns de devtools
-    document.addEventListener("keydown", function(e) {
-      if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
-        (e.ctrlKey && (e.key === "U" || e.key === "u"))
-      ) {
-        e.preventDefault();
-        window.location.href = "punido.html";
-      }
-    });
-  
-    // Detecta DevTools aberto por atraso
-    setInterval(() => {
-      const start = performance.now();
-      debugger;
-      const end = performance.now();
-      if (end - start > 100) {
-        window.location.href = "punido.html";
-      }
-    }, 1000);
-  
-    // Detecta DevTools pela manipulação do console
-    (function() {
-      const element = new Image();
-      Object.defineProperty(element, 'id', {
-        get: function () {
-          window.location.href = "punido.html";
-        }
-      });
-      console.log(element);
-    })();
-  </script>
-  
+</body>
+</html>
