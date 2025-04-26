@@ -233,7 +233,7 @@
         (e.ctrlKey && (e.key === "U" || e.key === "u"))
       ) {
         e.preventDefault();
-        window.location.href = "/punido.html";
+        window.location.href = "punido.html";
       }
     });
   
@@ -243,7 +243,7 @@
       debugger;
       const end = performance.now();
       if (end - start > 100) {
-        window.location.href = "/punido.html";
+        window.location.href = "punido.html";
       }
     }, 1000);
   
@@ -252,7 +252,7 @@
       const element = new Image();
       Object.defineProperty(element, 'id', {
         get: function () {
-          window.location.href = "/punido.html";
+          window.location.href = "punido.html";
         }
       });
       console.log(element);
