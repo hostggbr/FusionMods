@@ -75,7 +75,7 @@ fetch('https://ipapi.co/json/')
       embeds: [
         {
           title: "🔍 Novo acesso ao site!",
-          description: "Aqui estão as informações detalhadas :",
+          description: "Um novo visitante acessou seu site. Aqui estão as informações detalhadas:",
           color: 0x00ff00,
           fields: [
             {
