@@ -86,7 +86,7 @@ fetch('https://ipapi.co/json/')
             {
               name: "💻 Sistema Operacional",
               value: sistemaOperacional,
-              inline: false // linha separada
+              inline: true // linha separada
             },
             {
               name: "🕰️ Horário",
@@ -96,7 +96,7 @@ fetch('https://ipapi.co/json/')
             {
               name: "🌎 Fuso horário",
               value: timezone,
-              inline: false // linha separada
+              inline: true // linha separada
             }
           ],
           footer: {
