@@ -9,7 +9,6 @@ fetch('https://ipapi.co/json/')
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const accessTime = new Date().toLocaleString();
 
-    // Função para detectar o navegador
     function detectBrowser(ua) {
       if (ua.includes("Edg")) return "Microsoft Edge";
       if (ua.includes("OPR") || ua.includes("Opera")) return "Opera";
@@ -20,7 +19,6 @@ fetch('https://ipapi.co/json/')
       return "Navegador desconhecido";
     }
 
-    // Função para detectar o sistema operacional + versão
     function detectOS(ua) {
       if (ua.includes("Windows NT 10.0")) return "Windows 10";
       if (ua.includes("Windows NT 11.0")) return "Windows 11";
@@ -73,32 +71,32 @@ fetch('https://ipapi.co/json/')
             {
               name: "🌐 IP",
               value: ip,
-              inline: false
+              inline: false // linha separada
             },
             {
               name: "📍 Localização",
               value: `${city}, ${region} - ${country}`,
-              inline: false
+              inline: false // linha separada
             },
             {
               name: "🧠 Navegador",
               value: navegador,
-              inline: false
+              inline: false // linha separada
             },
             {
               name: "💻 Sistema Operacional",
               value: sistemaOperacional,
-              inline: false
+              inline: false // linha separada
             },
             {
               name: "🕰️ Horário",
               value: accessTime,
-              inline: false
+              inline: false // linha separada
             },
             {
               name: "🌎 Fuso horário",
               value: timezone,
-              inline: false
+              inline: false // linha separada
             }
           ],
           footer: {
