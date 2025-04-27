@@ -13,22 +13,22 @@ fetch('https://ipapi.co/json/')
       let browser = "Navegador desconhecido";
       let version = "";
 
-      if (ua.includes("Edg")) {
+      if (ua.includes("Edg/")) {
         browser = "Microsoft Edge";
         version = ua.match(/Edg\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("OPR") || ua.includes("Opera")) {
+      } else if (ua.includes("OPR/")) {
         browser = "Opera";
         version = ua.match(/OPR\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("Chrome")) {
+      } else if (ua.includes("Chrome/")) {
         browser = "Google Chrome";
         version = ua.match(/Chrome\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("Safari") && !ua.includes("Chrome")) {
+      } else if (ua.includes("Safari/") && !ua.includes("Chrome/")) {
         browser = "Safari";
         version = ua.match(/Version\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("Firefox")) {
+      } else if (ua.includes("Firefox/")) {
         browser = "Mozilla Firefox";
         version = ua.match(/Firefox\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("MSIE") || ua.includes("Trident")) {
+      } else if (ua.includes("MSIE") || ua.includes("Trident/")) {
         browser = "Internet Explorer";
         version = ua.match(/(MSIE\s|rv:)([\d\.]+)/)?.[2];
       }
