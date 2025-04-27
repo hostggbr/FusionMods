@@ -31,21 +31,33 @@ function detectBrowser(ua) {
 }
 
 function detectOS(ua) {
-  if (ua.includes("Windows NT 11.0")) return "Windows 11";
-  if (ua.includes("Windows NT 10.0")) return "Windows 10";
-  if (ua.includes("Windows NT 6.3")) return "Windows 8.1";
-  if (ua.includes("Windows NT 6.2")) return "Windows 8";
-  if (ua.includes("Windows NT 6.1")) return "Windows 7";
-  if (ua.includes("Windows NT 6.0")) return "Windows Vista";
-  if (ua.includes("Windows NT 5.1")) return "Windows XP";
+  // Detectando as versões do Windows de forma mais robusta
+  if (ua.includes("Windows NT 10.0")) return "Windows 10"; // Windows 10
+  if (ua.includes("Windows NT 6.3")) return "Windows 8.1"; // Windows 8.1
+  if (ua.includes("Windows NT 6.2")) return "Windows 8"; // Windows 8
+  if (ua.includes("Windows NT 6.1")) return "Windows 7"; // Windows 7
+  if (ua.includes("Windows NT 6.0")) return "Windows Vista"; // Windows Vista
+  if (ua.includes("Windows NT 5.1")) return "Windows XP"; // Windows XP
+  if (ua.includes("Windows NT 5.2")) return "Windows Server 2003"; // Windows Server 2003
+  if (ua.includes("Windows NT 4.0")) return "Windows NT 4.0"; // Windows NT 4.0
+  if (ua.includes("Windows CE")) return "Windows CE"; // Windows CE
+
+  // Detecção do Windows 11
+  if (ua.includes("Windows NT 11.0")) return "Windows 11"; // Windows 11
+
+  // Detectando macOS
   if (ua.includes("Mac OS X")) {
     const match = ua.match(/Mac OS X (\d+[_\.\d]+)/);
     return match ? "Mac OS X " + match[1].replace(/_/g, '.') : "Mac OS X";
   }
+
+  // Detectando Android
   if (ua.includes("Android")) {
     const match = ua.match(/Android\s+([\d.]+)/);
     return match ? "Android " + match[1] : "Android";
   }
+
+  // Detectando iOS
   if (ua.includes("iPhone")) {
     const match = ua.match(/iPhone OS (\d+[_\d]+)/);
     return match ? "iOS " + match[1].replace(/_/g, '.') : "iOS (iPhone)";
@@ -54,6 +66,7 @@ function detectOS(ua) {
     const match = ua.match(/CPU OS (\d+[_\d]+)/);
     return match ? "iOS " + match[1].replace(/_/g, '.') : "iOS (iPad)";
   }
+
   if (ua.includes("Linux")) return "Linux";
   return "Sistema desconhecido";
 }
@@ -92,9 +105,9 @@ function buildPayload(info, visits) {
           { name: "📱 Tipo de Dispositivo", value: info.deviceType, inline: false },
           { name: "🧠 Navegador", value: info.browser, inline: true },
           { name: "💻 Sistema Operacional", value: info.os, inline: true },
-          { name: "🕰️ Horário", value: info.accessTime, inline: false },
+          { name: "⏰ Horário", value: info.accessTime, inline: false },
           { name: "🌎 Fuso horário", value: info.timezone, inline: false },
-          { name: "🔢 Número de Visitas", value: `${visits} visita(s) registrada(s)`, inline: false }
+          { name: "1️⃣ Número de Visitas", value: `${visits} visita(s) registrada(s)`, inline: false }
         ],
         footer: { text: "📡 FusionMods - Acesso registrado" },
         timestamp: new Date().toISOString()
