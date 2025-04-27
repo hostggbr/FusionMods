@@ -43,7 +43,7 @@ function detectOS(ua) {
   if (ua.includes("Windows CE")) return "Windows CE"; // Windows CE
 
   // Detecção do Windows 11
-  if (ua.includes("Windows NT 11.0")) return "Windows 11"; // Windows 11
+  if (ua.includes("Windows NT 10.1") || ua.includes("Windows NT 11.0")) return "Windows 11"; // Windows 11
 
   // Detectando macOS
   if (ua.includes("Mac OS X")) {
