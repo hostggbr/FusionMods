@@ -75,7 +75,7 @@ fetch('https://ipapi.co/json/')
       embeds: [
         {
           title: "🔍 Novo acesso ao site!",
-          description: "Um novo visitante acessou seu site. Aqui estão as informações detalhadas:",
+          description: "Informações :",
           color: 0x00ff00,
           fields: [
             {
@@ -99,7 +99,7 @@ fetch('https://ipapi.co/json/')
               inline: false
             },
             {
-              name: "🕰️ Horário",
+              name: "⏰ Horário",
               value: accessTime,
               inline: false
             },
