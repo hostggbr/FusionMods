@@ -9,31 +9,14 @@ fetch('https://ipapi.co/json/')
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const accessTime = new Date().toLocaleString();
 
-    function detectBrowserWithVersion(ua) {
-      let browser = "Navegador desconhecido";
-      let version = "";
-
-      if (ua.includes("Edg")) {
-        browser = "Microsoft Edge";
-        version = ua.match(/Edg\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("OPR") || ua.includes("Opera")) {
-        browser = "Opera";
-        version = ua.match(/OPR\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("Chrome")) {
-        browser = "Google Chrome";
-        version = ua.match(/Chrome\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("Safari") && !ua.includes("Chrome")) {
-        browser = "Safari";
-        version = ua.match(/Version\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("Firefox")) {
-        browser = "Mozilla Firefox";
-        version = ua.match(/Firefox\/([\d\.]+)/)?.[1];
-      } else if (ua.includes("MSIE") || ua.includes("Trident")) {
-        browser = "Internet Explorer";
-        version = ua.match(/(MSIE\s|rv:)([\d\.]+)/)?.[2];
-      }
-
-      return version ? `${browser} ${version}` : browser;
+    function detectBrowser(ua) {
+      if (ua.includes("Edg")) return "Microsoft Edge";
+      if (ua.includes("OPR") || ua.includes("Opera")) return "Opera";
+      if (ua.includes("Chrome")) return "Google Chrome";
+      if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
+      if (ua.includes("Firefox")) return "Mozilla Firefox";
+      if (ua.includes("MSIE") || ua.includes("Trident")) return "Internet Explorer";
+      return "Navegador desconhecido";
     }
 
     function detectOS(ua) {
@@ -68,7 +51,7 @@ fetch('https://ipapi.co/json/')
       return "Sistema desconhecido";
     }
 
-    const navegador = detectBrowserWithVersion(userAgent);
+    const navegador = detectBrowser(userAgent);
     const sistemaOperacional = detectOS(userAgent);
 
     const payload = {
@@ -99,7 +82,7 @@ fetch('https://ipapi.co/json/')
               inline: false
             },
             {
-              name: "🕰️ Horário",
+              name: "⏰ Horário",
               value: accessTime,
               inline: false
             },
