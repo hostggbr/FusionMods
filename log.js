@@ -71,32 +71,32 @@ fetch('https://ipapi.co/json/')
             {
               name: "🌐 IP",
               value: ip,
-              inline: false // linha separada
+              inline: false
             },
             {
               name: "📍 Localização",
               value: `${city}, ${region} - ${country}`,
-              inline: false // linha separada
+              inline: false
             },
             {
               name: "🧠 Navegador",
               value: navegador,
-              inline: false // linha separada
+              inline: true // mesma linha
             },
             {
               name: "💻 Sistema Operacional",
               value: sistemaOperacional,
-              inline: true // linha separada
+              inline: true // mesma linha
             },
             {
               name: "🕰️ Horário",
               value: accessTime,
-              inline: false // linha separada
+              inline: true // mesma linha
             },
             {
               name: "🌎 Fuso horário",
               value: timezone,
-              inline: true // linha separada
+              inline: true // mesma linha
             }
           ],
           footer: {
