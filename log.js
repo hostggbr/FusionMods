@@ -81,27 +81,32 @@ fetch('https://ipapi.co/json/')
             {
               name: "🧠 Navegador",
               value: navegador,
-              inline: true // mesma linha
+              inline: true
             },
             {
               name: "💻 Sistema Operacional",
               value: sistemaOperacional,
-              inline: true // mesma linha
+              inline: true
+            },
+            {
+              name: "\u200B", // campo invisível pra forçar quebra de linha
+              value: "\u200B",
+              inline: true
             },
             {
               name: "🕰️ Horário",
               value: accessTime,
-              inline: true // mesma linha
+              inline: true
             },
             {
               name: "🌎 Fuso horário",
               value: timezone,
-              inline: true // mesma linha
+              inline: true
             }
           ],
           footer: {
             text: "📡 FusionMods - Acesso registrado"
-          },
+          },  
           timestamp: new Date().toISOString()
         }
       ]
