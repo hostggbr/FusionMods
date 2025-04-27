@@ -83,22 +83,22 @@ fetch('https://ipapi.co/json/')
             {
               name: "🧠 Navegador",
               value: navegador,
-              inline: true
+              inline: false
             },
             {
               name: "💻 Sistema Operacional",
               value: sistemaOperacional,
-              inline: true
+              inline: false
             },
             {
               name: "🕰️ Horário",
               value: accessTime,
-              inline: true
+              inline: false
             },
             {
               name: "🌎 Fuso horário",
               value: timezone,
-              inline: true
+              inline: false
             }
           ],
           footer: {
